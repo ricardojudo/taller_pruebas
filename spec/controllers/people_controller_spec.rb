@@ -50,4 +50,24 @@ describe PeopleController do
       end      
     end
   end
+  
+  describe 'PUT :update' do
+    context 'With valid data' do
+      it 'Updates person in db' do
+        person=FactoryGirl.create(:person)
+        put :update, id: person.id, person: {name: 'Nemo'}
+        person.reload
+        expect(person.name).to eq 'Nemo'        
+      end 
+    end
+    context 'With invalid data' do
+      it 'Does not update person in db' do
+        person=FactoryGirl.create(:person)
+        put :update, id: person.id, person: {name: nil}
+        person.reload
+        expect(person.name).to_not be_nil
+      end
+    end
+    
+  end
 end

@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  before_action :set_person, only: [:show, :edit]
+  before_action :set_person, only: [:show, :edit, :update]
   
   def index
     @people = Person.all
@@ -21,13 +21,21 @@ class PeopleController < ApplicationController
       redirect_to person_path(@person)
     else
       render :new
-    end        
+    end            
   end
-
+  
+  def update    
+    if @person.update(params_for_person)
+      redirect_to person_path(@person)
+    else
+      render :edit
+    end
+  end
   
   private
   def set_person
-    @person = Person.find(params[:id])
+    #@person = Person.where(id:params[:id]).first
+    @person = Person.find_by(id:params[:id])
   end
   
   def params_for_person
