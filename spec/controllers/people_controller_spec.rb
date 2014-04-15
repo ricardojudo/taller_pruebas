@@ -15,9 +15,7 @@ describe PeopleController do
       get :new
       expect(assigns(:person)).to be_a_new(Person)
     end
-  end 
-    
-  
+  end
 
   describe "GET 'edit'" do
     it "returns http sucess" do
@@ -35,4 +33,14 @@ describe PeopleController do
     end
   end
 
+  describe 'POST :create' do
+    context 'With valid data' do
+      it 'Creates a new person in db'
+      
+    end
+    context 'With invalid data' do
+      it 'Does not create person db'
+      
+    end
+  end
 end

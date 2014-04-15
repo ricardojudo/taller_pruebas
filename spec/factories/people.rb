@@ -6,10 +6,10 @@ FactoryGirl.define do
     bod "2014-04-15"
     height "9.99"
     alive false
+
+    factory :invalid_person do
+      name nil
+    end
   end
-  
-  factory :invalid_person do
-    name nil    
-  end
-  
+
 end

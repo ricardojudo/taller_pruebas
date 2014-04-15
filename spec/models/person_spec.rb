@@ -7,7 +7,7 @@ describe Person do
     end  
     
     it 'Has an invalid factory' do
-      expect(FactoryGilr.build(:invalid_person)).to_not be_valid
+      expect(FactoryGirl.build(:invalid_person)).to_not be_valid
     end
   end
   #pending "add some examples to (or delete) #{__FILE__}"
