@@ -35,12 +35,19 @@ describe PeopleController do
 
   describe 'POST :create' do
     context 'With valid data' do
-      it 'Creates a new person in db'
+      it 'Creates a new person in db' do
+        expect {
+          post :create, person: FactoryGirl.attributes_for(:person)
+        }.to change(Person, :count).by(1)
+      end
       
     end
     context 'With invalid data' do
-      it 'Does not create person db'
-      
+      it 'Does not create person db' do
+        expect{
+          post :create, person: FactoryGirl.attributes_for(:invalid_person)
+        }.to_not change(Person, :count)
+      end      
     end
   end
 end
